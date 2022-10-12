@@ -1,21 +1,22 @@
-export const REPORTS_RESULTS_REQUEST = 'REPORTS_RESULTS_REQUEST'
-export const REPORTS_RESULTS_SUCCESS = 'REPORTS_RESULTS_SUCCESS'
-export const REPORTS_RESULTS_FAILURE = 'REPORTS_RESULTS_FAILURE'
+export const POKEMONS_RETRIEVE_REQUEST = 'POKEMONS_RETRIEVE_REQUEST'
+export const POKEMONS_RETRIEVE_SUCCESS = 'POKEMONS_RETRIEVE_SUCCESS'
+export const POKEMONS_RETRIEVE_FAILURE = 'POKEMONS_RETRIEVE_FAILURE'
 
-export function reportResultsRequest(data) {
-  return { type: REPORTS_RESULTS_REQUEST, data }
+export function pokemonsRetrieveRequest(data) {
+  return { type: POKEMONS_RETRIEVE_REQUEST, data }
 }
 
-export function reportResultsSuccess(data) {
+export function pokemonsRetrieveSuccess(data) {
+  console.log('success', data)
   return {
-    type: REPORTS_RESULTS_SUCCESS,
+    type: POKEMONS_RETRIEVE_SUCCESS,
     data,
   }
 }
 
-export function reportResultsError(error) {
+export function pokemonsRetrieveError(error) {
   return {
-    type: REPORTS_RESULTS_FAILURE,
+    type: POKEMONS_RETRIEVE_FAILURE,
     error,
   }
 }

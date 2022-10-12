@@ -1,25 +1,20 @@
-import { takeLatest, fork, all, put } from 'redux-saga/effects'
-// import * as api from 'common/services/api'
-import * as actions from 'common/actions'
+import { takeLatest, fork, all, put, call } from 'redux-saga/effects'
+import get from '../services/api'
+import * as actions from '../actions'
 
-export function* reportResults() {
+export function* pokemonsRetrieve() {
   try {
-    // const response = yield call(api.callAWS, {
-    //  entity: `report/${action.data.id}`,
-    //  params: action.data.params,
-    //  method: 'GET',
-    // })
-    yield put(console.log('test'))
-    // yield put(actions.reportResultsSuccess({ ...response, id: action.data.id }))
+    const response = yield call(get, { entity: 'pokemon' })
+    yield put(actions.pokemonsRetrieveSuccess(response))
   } catch (error) {
     console.error(error)
-    // yield put(actions.reportResultsError(error))
+    yield put(actions.pokemonsRetrieveError(error))
   }
 }
-export function* watchReportResults() {
-  yield takeLatest(actions.REPORTS_RESULTS_REQUEST, reportResults)
+export function* watchPokemonsRetrieve() {
+  yield takeLatest(actions.POKEMONS_RETRIEVE_REQUEST, pokemonsRetrieve)
 }
 
 export default function* rootSaga() {
-  yield all([fork(watchReportResults)])
+  yield all([fork(watchPokemonsRetrieve)])
 }
