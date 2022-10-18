@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { connect } from 'react-redux'
 import { Container, Box } from '@mui/material'
 
-import { pokemonsRetrieveRequest } from './common/actions'
-
 import Header from './pages/layout/Header'
 
-function App({ onRetrieveAllPokemons }) {
-  useEffect(() => {
-    onRetrieveAllPokemons()
-  }, [])
-
+function App() {
   return (
     <Container>
       <Header />
@@ -22,6 +16,4 @@ function App({ onRetrieveAllPokemons }) {
 
 const mapStateToProps = () => ({})
 
-export default connect(mapStateToProps, {
-  onRetrieveAllPokemons: pokemonsRetrieveRequest,
-})(App)
+export default connect(mapStateToProps, {})(App)

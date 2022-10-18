@@ -20,7 +20,11 @@
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react-hooks/rules-of-hooks": "error",
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-empty-pattern": 0,
+    "import/no-unresolved": 0,
+    "default-param-last": 0,
+    "react/jsx-props-no-spreading": 0
   },
   "settings": {
     /*"import/resolver": {
