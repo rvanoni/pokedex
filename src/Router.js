@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
+import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
+
+import { pokedexesRetrieveRequest } from 'common/actions'
+
+import Pokedex from 'pages/pokedex'
+import Pokemons from 'pages/pokedex/pokemons'
 
 import App from './App'
-import Search from './pages/search'
 
-function Router() {
+function Router({ onRetrieveAllPokedexes }) {
+  useEffect(() => {
+    onRetrieveAllPokedexes()
+  }, [])
+
   return (
     <BrowserRouter>
-      <QueryParamProvider ReactRouterRoute={Route}>
+      <QueryParamProvider adapter={ReactRouter6Adapter}>
         <Routes>
-          <Route path='/search' element={<Search />} />
+          <Route path='/pokedex/:id/pokemons' element={<Pokemons />} />
+          <Route path='/pokedex' element={<Pokedex />} />
           <Route path='/' element={<App />} />
         </Routes>
       </QueryParamProvider>
@@ -21,4 +31,6 @@ function Router() {
 
 const mapStateToProps = () => ({})
 
-export default connect(mapStateToProps, {})(Router)
+export default connect(mapStateToProps, {
+  onRetrieveAllPokedexes: pokedexesRetrieveRequest,
+})(Router)

@@ -12,6 +12,9 @@ import {
   Button,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import { Link } from 'react-router-dom'
+
+const navItems = ['Pokedex']
 
 function Header() {
   return (
@@ -27,11 +30,21 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+
+            <Typography variant='h6' sx={{ flexGrow: 1 }}>
               Pokedex
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              <Button sx={{ color: '#fff' }}>User</Button>
+              {navItems.map((item) => (
+                <Button
+                  key={item}
+                  sx={{ color: '#fff' }}
+                  component={Link}
+                  to={`/${item.toLowerCase()}`}
+                >
+                  {item}
+                </Button>
+              ))}
             </Box>
           </Toolbar>
         </AppBar>

@@ -18,6 +18,7 @@ import Router from './Router'
 import './index.css'
 
 const sagaMiddleware = createSagaMiddleware()
+
 const store = createStore(reducer, applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(rootSaga)
