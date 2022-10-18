@@ -9,7 +9,7 @@ function App() {
   return (
     <Container>
       <Header />
-      <Box sx={{ width: '100%' }}>Hello! To start, go to /search</Box>
+      <Box sx={{ width: '100%' }}>Hello! To start, click on Pokedex</Box>
     </Container>
   )
 }
